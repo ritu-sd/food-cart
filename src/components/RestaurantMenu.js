@@ -12,10 +12,10 @@ const RestaurantMenu = () => {
    const resInfo = useRestaurantMenu(resId);
 
 
-    if (resInfo === null) {
+    if (resInfo === null || resInfo === undefined) {
         return <Shimmer />;
       }
-    
+      console.log(resInfo);
 
     const { name, cuisines,cloudinaryImageId,costForTwoMessage } = resInfo?.cards[2]?.card?.card?.info;
 
