@@ -1,4 +1,4 @@
-import ResturantCard from "./ResturantCard";
+import ResturantCard,{withPromotedLabel} from "./ResturantCard";
 
 import restList from "../utils/data";
 import { useEffect, useState } from "react";
@@ -17,6 +17,7 @@ const Body = () => {
 
     const [searchTxt, setSearchTxt] = useState([]);
 
+    const ResturantCardPromoted = withPromotedLabel(ResturantCard);
 
   
   
@@ -87,7 +88,14 @@ const Body = () => {
               { filteredRes.map((resturant) => (
                <Link
                key={resturant.info.id}
-               to={"/restaurants/" + resturant.info.id }> <ResturantCard  resData={resturant}/> </Link> 
+               to={"/restaurants/" + resturant.info.id }> 
+
+               {
+                resturant.info.promoted ? (
+                <ResturantCardPromoted  resData={resturant}/> 
+               ) : ( <ResturantCard  resData={resturant}/> 
+               )}          
+               </Link> 
                 ))}
             </div>
 
